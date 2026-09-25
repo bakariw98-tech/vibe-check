@@ -796,6 +796,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-porcelain.webp",
+     "key": "r3-v-porcelain",
+     "name": "V Porcelain",
+     "traits": {
+      "finish": "3d-porcelain",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-porcelain.webp",
+     "key": "r3-f-porcelain",
+     "name": "F Porcelain",
+     "traits": {
+      "finish": "3d-porcelain",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-ice.webp",
+     "key": "r3-wordmark-ice",
+     "name": "Wordmark Ice",
+     "traits": {
+      "finish": "3d-ice",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-vf-splash.webp",
+     "key": "r3-vf-splash",
+     "name": "VF Splash",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-helix-glass.webp",
+     "key": "r3-helix-glass",
+     "name": "Helix Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-obsidian.webp",
+     "key": "r3-orb-obsidian",
+     "name": "Orb Obsidian",
+     "traits": {
+      "finish": "3d-obsidian",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-torus-chrome.webp",
+     "key": "r3-torus-chrome",
+     "name": "Torus Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-pyramid-chrome.webp",
+     "key": "r3-pyramid-chrome",
+     "name": "Pyramid Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-shard-glass.webp",
+     "key": "r3-shard-glass",
+     "name": "Shard Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-ring-chrome.webp",
+     "key": "r3-ring-chrome",
+     "name": "Ring Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
