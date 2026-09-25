@@ -576,6 +576,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-molten.webp",
+     "key": "r3-v-molten",
+     "name": "V Molten",
+     "traits": {
+      "finish": "3d-molten",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-holo.webp",
+     "key": "r3-f-holo",
+     "name": "F Holo",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-glass.webp",
+     "key": "r3-f-glass",
+     "name": "F Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-prism.webp",
+     "key": "r3-f-prism",
+     "name": "F Prism",
+     "traits": {
+      "finish": "3d-prism",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-ice.webp",
+     "key": "r3-vf-ice",
+     "name": "VF Ice",
+     "traits": {
+      "finish": "3d-ice",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-obsidian.webp",
+     "key": "r3-wordmark-obsidian",
+     "name": "Wordmark Obsidian",
+     "traits": {
+      "finish": "3d-obsidian",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-holo.webp",
+     "key": "r3-wordmark-holo",
+     "name": "Wordmark Holo",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-cube-chrome.webp",
+     "key": "r3-cube-chrome",
+     "name": "Cube Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-spiral-glass.webp",
+     "key": "r3-spiral-glass",
+     "name": "Spiral Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-ring-neon.webp",
+     "key": "r3-ring-neon",
+     "name": "Ring Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
