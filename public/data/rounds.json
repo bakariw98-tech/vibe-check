@@ -1902,6 +1902,116 @@
       "palette": "brand",
       "shape": "wordmark"
      }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-zigzag.webp",
+     "key": "r4-zigzag",
+     "name": "Zigzag",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-semicircle.webp",
+     "key": "r4-semicircle",
+     "name": "Semicircle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-cross.webp",
+     "key": "r4-cross",
+     "name": "Cross",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-parallel.webp",
+     "key": "r4-parallel",
+     "name": "Parallel Bars",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-corner.webp",
+     "key": "r4-corner",
+     "name": "Corner",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-octagon.webp",
+     "key": "r4-octagon",
+     "name": "Octagon",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-spark.webp",
+     "key": "r4-spark",
+     "name": "Spark",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-ovals.webp",
+     "key": "r4-ovals",
+     "name": "Ovals",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-grid4.webp",
+     "key": "r4-grid4",
+     "name": "Grid Four",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-arrow.webp",
+     "key": "r4-arrow",
+     "name": "Arrow",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
     }
    ]
   }
