@@ -1016,6 +1016,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-splash.webp",
+     "key": "r3-v-splash",
+     "name": "V Splash",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-splash.webp",
+     "key": "r3-f-splash",
+     "name": "F Splash",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-splash.webp",
+     "key": "r3-wordmark-splash",
+     "name": "Wordmark Splash",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-vf-cube.webp",
+     "key": "r3-vf-cube",
+     "name": "VF Cube",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-pearl.webp",
+     "key": "r3-orb-pearl",
+     "name": "Orb Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-knot-neon.webp",
+     "key": "r3-knot-neon",
+     "name": "Knot Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-torus-glass.webp",
+     "key": "r3-torus-glass",
+     "name": "Torus Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-spiral-chrome.webp",
+     "key": "r3-spiral-chrome",
+     "name": "Spiral Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-shard-neon.webp",
+     "key": "r3-shard-neon",
+     "name": "Shard Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-pyramid-pearl.webp",
+     "key": "r3-pyramid-pearl",
+     "name": "Pyramid Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
