@@ -1126,6 +1126,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-vf-aurora.webp",
+     "key": "r3-vf-aurora",
+     "name": "VF Aurora",
+     "traits": {
+      "finish": "aurora-glow",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-pearl.webp",
+     "key": "r3-v-pearl",
+     "name": "V Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-pearl.webp",
+     "key": "r3-f-pearl",
+     "name": "F Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-smoke.webp",
+     "key": "r3-wordmark-smoke",
+     "name": "Wordmark Smoke",
+     "traits": {
+      "finish": "smoke-ink",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-smoke.webp",
+     "key": "r3-orb-smoke",
+     "name": "Orb Smoke",
+     "traits": {
+      "finish": "smoke-ink",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-helix-pearl.webp",
+     "key": "r3-helix-pearl",
+     "name": "Helix Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-cube-pearl.webp",
+     "key": "r3-cube-pearl",
+     "name": "Cube Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-torus-neon.webp",
+     "key": "r3-torus-neon",
+     "name": "Torus Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-spiral-neon.webp",
+     "key": "r3-spiral-neon",
+     "name": "Spiral Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-vf-nebula.webp",
+     "key": "r3-vf-nebula",
+     "name": "VF Nebula",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
     }
    ]
   }
