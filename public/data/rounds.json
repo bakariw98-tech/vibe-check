@@ -466,6 +466,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-neon.webp",
+     "key": "r3-v-neon",
+     "name": "V Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-crystal.webp",
+     "key": "r3-f-crystal",
+     "name": "F Crystal",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-prism.webp",
+     "key": "r3-vf-prism",
+     "name": "VF Prism",
+     "traits": {
+      "finish": "3d-prism",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-neon.webp",
+     "key": "r3-wordmark-neon",
+     "name": "Wordmark Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-holo.webp",
+     "key": "r3-v-holo",
+     "name": "V Holo",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-obsidian.webp",
+     "key": "r3-f-obsidian",
+     "name": "F Obsidian",
+     "traits": {
+      "finish": "3d-obsidian",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-shard-crystal.webp",
+     "key": "r3-shard-crystal",
+     "name": "Shard Crystal",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-torus-balloon.webp",
+     "key": "r3-torus-balloon",
+     "name": "Torus Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-molten.webp",
+     "key": "r3-vf-molten",
+     "name": "VF Molten",
+     "traits": {
+      "finish": "3d-molten",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-crystal.webp",
+     "key": "r3-orb-crystal",
+     "name": "Orb Crystal",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
