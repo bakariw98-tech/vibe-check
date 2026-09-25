@@ -2122,6 +2122,116 @@
       "palette": "brand",
       "shape": "vf-letters"
      }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-arc-line.webp",
+     "key": "r4-arc-line",
+     "name": "Arc Line",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-triangle-line.webp",
+     "key": "r4-triangle-line",
+     "name": "Triangle Line",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-eclipse.webp",
+     "key": "r4-eclipse",
+     "name": "Eclipse",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-pentagon.webp",
+     "key": "r4-pentagon",
+     "name": "Pentagon",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-ribbon.webp",
+     "key": "r4-ribbon",
+     "name": "Ribbon",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-steps.webp",
+     "key": "r4-steps",
+     "name": "Steps",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-tower.webp",
+     "key": "r4-tower",
+     "name": "Tower",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-flag.webp",
+     "key": "r4-flag",
+     "name": "Flag",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-crescent.webp",
+     "key": "r4-crescent",
+     "name": "Crescent",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-pie.webp",
+     "key": "r4-pie",
+     "name": "Pie",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
     }
    ]
   }
