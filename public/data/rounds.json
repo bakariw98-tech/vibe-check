@@ -1462,6 +1462,116 @@
       "palette": "brand",
       "shape": "abstract-mark"
      }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-solid.webp",
+     "key": "r4-v-solid",
+     "name": "V Solid",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-outline.webp",
+     "key": "r4-v-outline",
+     "name": "V Outline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-dot.webp",
+     "key": "r4-v-dot",
+     "name": "V Dot",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-circle.webp",
+     "key": "r4-v-circle",
+     "name": "V Circle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-split.webp",
+     "key": "r4-v-split",
+     "name": "V Split",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-rounded.webp",
+     "key": "r4-v-rounded",
+     "name": "V Rounded",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-notch.webp",
+     "key": "r4-v-notch",
+     "name": "V Notch",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-bar.webp",
+     "key": "r4-v-bar",
+     "name": "V Bar",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-check.webp",
+     "key": "r4-v-check",
+     "name": "V Check",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-stencil.webp",
+     "key": "r4-v-stencil",
+     "name": "V Stencil",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
     }
    ]
   }
