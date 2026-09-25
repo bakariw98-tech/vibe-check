@@ -2012,6 +2012,116 @@
       "palette": "brand",
       "shape": "abstract-mark"
      }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-tile.webp",
+     "key": "r4-v-tile",
+     "name": "V Tile",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-circle.webp",
+     "key": "r4-f-circle",
+     "name": "F Circle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-square.webp",
+     "key": "r4-vf-square",
+     "name": "VF Square",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-negative.webp",
+     "key": "r4-v-negative",
+     "name": "V Negative",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-duo.webp",
+     "key": "r4-f-duo",
+     "name": "F Duotone",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-duo.webp",
+     "key": "r4-vf-duo",
+     "name": "VF Duotone",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-v",
+     "file": "logos/r4/r4-v-line.webp",
+     "key": "r4-v-line",
+     "name": "V Line",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-line.webp",
+     "key": "r4-f-line",
+     "name": "F Line",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-dot-accent.webp",
+     "key": "r4-vf-dot-accent",
+     "name": "VF Dot Accent",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-stripe.webp",
+     "key": "r4-vf-stripe",
+     "name": "VF Stripe",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
     }
    ]
   }
