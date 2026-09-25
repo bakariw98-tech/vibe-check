@@ -2342,6 +2342,116 @@
       "palette": "brand",
       "shape": "wordmark"
      }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-hexagon-solid.webp",
+     "key": "r4-hexagon-solid",
+     "name": "Hexagon Solid",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-circle-quarter.webp",
+     "key": "r4-circle-quarter",
+     "name": "Circle Quarter",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-bars-vertical.webp",
+     "key": "r4-bars-vertical",
+     "name": "Bars Vertical",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-ring-quarter.webp",
+     "key": "r4-ring-quarter",
+     "name": "Ring Quarter",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-diamond-line.webp",
+     "key": "r4-diamond-line",
+     "name": "Diamond Line",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-star-circle.webp",
+     "key": "r4-star-circle",
+     "name": "Star Circle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-badge.webp",
+     "key": "r4-vf-badge",
+     "name": "VF Badge",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-duo.webp",
+     "key": "r4-word-duo",
+     "name": "Wordmark Duo",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-hex-dot.webp",
+     "key": "r4-hex-dot",
+     "name": "Hex Dot",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-triangle-solid.webp",
+     "key": "r4-triangle-solid",
+     "name": "Triangle Solid",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
     }
    ]
   }
