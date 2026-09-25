@@ -1,5 +1,5 @@
 {
- "current_round": 3,
+ "current_round": 4,
  "mqtt_topic": "vflab-x7k2m9p4",
  "rounds": {
   "1": {
@@ -1345,6 +1345,122 @@
       "finish": "3d-glass",
       "palette": "brand",
       "shape": "wordmark"
+     }
+    }
+   ]
+  },
+  "4": {
+   "kind": "logos",
+   "note": "Round 4: 2D flat reset \u2014 his call after r3. Simple, professional vector-style marks like real brands ship: flat geometry, violet/cyan/white on dark, restrained two-color combos. No 3D, no chrome, no gradients. 100 cards in batches of 10.",
+   "cards": [
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-arc.webp",
+     "key": "r4-arc",
+     "name": "Arc",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-triangle.webp",
+     "key": "r4-triangle",
+     "name": "Triangle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-hex.webp",
+     "key": "r4-hex",
+     "name": "Hex",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-dot-circle.webp",
+     "key": "r4-dot-circle",
+     "name": "Dot Circle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-chevron.webp",
+     "key": "r4-chevron",
+     "name": "Chevron",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-ring-split.webp",
+     "key": "r4-ring-split",
+     "name": "Ring Split",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-diamond.webp",
+     "key": "r4-diamond",
+     "name": "Diamond",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-square-notch.webp",
+     "key": "r4-square-notch",
+     "name": "Square Notch",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-bullseye.webp",
+     "key": "r4-bullseye",
+     "name": "Bullseye",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
+     }
+    },
+    {
+     "family": "abstract",
+     "file": "logos/r4/r4-blade.webp",
+     "key": "r4-blade",
+     "name": "Blade",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "abstract-mark"
      }
     }
    ]
