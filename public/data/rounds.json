@@ -1792,6 +1792,116 @@
       "palette": "brand",
       "shape": "vf-letters"
      }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-violet.webp",
+     "key": "r4-word-violet",
+     "name": "Wordmark Violet",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-cyan.webp",
+     "key": "r4-word-cyan",
+     "name": "Wordmark Cyan",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-white.webp",
+     "key": "r4-word-white",
+     "name": "Wordmark White",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-split.webp",
+     "key": "r4-word-split",
+     "name": "Wordmark Split",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-accent.webp",
+     "key": "r4-word-accent",
+     "name": "Wordmark Accent",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-outline.webp",
+     "key": "r4-word-outline",
+     "name": "Wordmark Outline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-mark-v.webp",
+     "key": "r4-word-mark-v",
+     "name": "Lockup V Mark",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-mark-dot.webp",
+     "key": "r4-word-mark-dot",
+     "name": "Lockup Dot Mark",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-condensed.webp",
+     "key": "r4-word-condensed",
+     "name": "Wordmark Condensed",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-wide.webp",
+     "key": "r4-word-wide",
+     "name": "Wordmark Wide",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
     }
    ]
   }
