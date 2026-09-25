@@ -1682,6 +1682,116 @@
       "palette": "brand",
       "shape": "letter-f"
      }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-solid.webp",
+     "key": "r4-vf-solid",
+     "name": "VF Solid",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-outline.webp",
+     "key": "r4-vf-outline",
+     "name": "VF Outline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-split.webp",
+     "key": "r4-vf-split",
+     "name": "VF Split",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-tile.webp",
+     "key": "r4-vf-tile",
+     "name": "VF Tile",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-stacked.webp",
+     "key": "r4-vf-stacked",
+     "name": "VF Stacked",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-overlap.webp",
+     "key": "r4-vf-overlap",
+     "name": "VF Overlap",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-circle.webp",
+     "key": "r4-vf-circle",
+     "name": "VF Circle",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-negative.webp",
+     "key": "r4-vf-negative",
+     "name": "VF Negative",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-monoline.webp",
+     "key": "r4-vf-monoline",
+     "name": "VF Monoline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "monogram-vf",
+     "file": "logos/r4/r4-vf-slash.webp",
+     "key": "r4-vf-slash",
+     "name": "VF Slash",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
     }
    ]
   }
