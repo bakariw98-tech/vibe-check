@@ -132,13 +132,13 @@ const report = (key, decision) =>
 // ---- cross-browser swipe memory ----
 // The server (Edge Config, via /api/mcp) is the canonical, last-write-wins
 // store for every swipe. On load we hydrate it into the local stores so a
-// fresh browser/Safari sees the same history: union per round and key, and
-// on any conflict the server value stands (server wins ties).
+// fresh browser/Safari sees the same history. Merge rule per card key:
+// latest timestamp wins; on an exact tie the server value stands.
+// Local-only keys (swipes made offline) are preserved.
 function mergeServerDecisions(local, serverMap) {
   for (const [k, v] of Object.entries(serverMap)) {
     const l = local[k];
-    if (!l || l.d !== v.d) local[k] = v;
-    else local[k] = { d: l.d, ts: Math.max(l.ts || 0, v.ts || 0) };
+    if (!l || (v.ts || 0) >= (l.ts || 0)) local[k] = { d: v.d, ts: v.ts || 0 };
   }
   return local;
 }
@@ -151,6 +151,13 @@ async function hydrate() {
     const now = Date.now();
     const toMap = (rd) => {
       const m = {};
+      if (rd.decisions) {
+        // Canonical server records with real timestamps — feed the merge rule.
+        for (const [k, v] of Object.entries(rd.decisions)) m[k] = { d: v.d, ts: v.ts || 0 };
+        return m;
+      }
+      // Back-compat: server only exposes keep/pass key lists; stamp them so
+      // a later real local swipe (with a newer ts) still wins.
       (rd.keeps || []).forEach(k => { m[k] = { d: "keep", ts: now }; });
       (rd.passes || []).forEach(k => { m[k] = { d: "pass", ts: now }; });
       return m;
@@ -367,12 +374,13 @@ $("#btnUndo").onclick = undo;
 $("#btnReset").onclick = () => {
   const rn = DECK === "logos" ? "Round " + ROUND : "Names N" + NROUND;
   if (!confirm("Clear all " + rn + " decisions and start over?")) return;
+  // One atomic server-side clear (reset_round) instead of N racing per-card
+  // writes, then wipe the local store to match.
+  mcpCall("reset_round", { round: roundTag() }).catch(() => {});
   if (DECK === "logos") {
-    Object.keys(decisions[ROUND] || {}).forEach(k => report(k, null)); // clear canonical too
     decisions[ROUND] = {}; history = []; store.save(LS_KEY, decisions);
     deck = CARDS.map(c => c.key);
   } else {
-    Object.keys(ndecisions[NROUND] || {}).forEach(k => report(k, null)); // clear canonical too
     ndecisions[NROUND] = {}; nhistory = []; store.save(NLS_KEY, ndecisions);
     ndeck = NCARDS.map(c => c.key);
   }

@@ -60,6 +60,10 @@ async function nameRoundSummary() {
       decided: Object.keys(dec).length,
       keeps: Object.entries(dec).filter(([, v]) => v.d === "keep").map(([k]) => k),
       passes: Object.entries(dec).filter(([, v]) => v.d === "pass").map(([k]) => k),
+      // Canonical decision records {d, ts} for timestamp-aware client merge.
+      decisions: Object.fromEntries(
+        Object.entries(dec).filter(([, v]) => v && v.d).map(([k, v]) => [k, { d: v.d, ts: v.ts || 0 }])
+      ),
     };
   }
   return { current: nr.current || 0, rounds: out };
@@ -165,6 +169,16 @@ const TOOLS = [
     },
   },
   {
+    name: "reset_round",
+    description: "Clear every swipe decision for one round atomically, server-side. Round is a logo-round number or an \"n<N>\" name round. Prefer this over sending per-card null decisions: one read-modify-write instead of N racing ones.",
+    inputSchema: {
+      type: "object",
+      properties: { round: { type: ["integer", "string"] } },
+      required: ["round"],
+      additionalProperties: false,
+    },
+  },
+  {
     name: "complete_round",
     description: "Signal a finished round with its full decision log. Round is a logo-round number or an \"n<N>\" name round.",
     inputSchema: {
@@ -201,6 +215,10 @@ async function callTool(name, args, host) {
           decided: Object.keys(dec).length,
           keeps: Object.entries(dec).filter(([, v]) => v.d === "keep").map(([k]) => k),
           passes: Object.entries(dec).filter(([, v]) => v.d === "pass").map(([k]) => k),
+          // Canonical decision records {d, ts} for timestamp-aware client merge.
+          decisions: Object.fromEntries(
+            Object.entries(dec).filter(([, v]) => v && v.d).map(([k, v]) => [k, { d: v.d, ts: v.ts || 0 }])
+          ),
         };
       }
       return textResult({ current_round: current, rounds: perRound,
@@ -283,6 +301,23 @@ async function callTool(name, args, host) {
       const tag = typeof round === "number" ? "r" + round : String(round);
       const where = await persistDecision(tag, key, decision);
       return textResult({ ok: true, persisted: where.store + "/" + where.bucket });
+    }
+
+    case "reset_round": {
+      const { round } = args;
+      if (!round) throw new Error("round required");
+      const tag = typeof round === "number" ? "r" + round : String(round);
+      const isName = tag[0] === "n";
+      const store = isName ? "name_decisions" : "decisions";
+      const bucket = isName ? tag : tag.slice(1);
+      // Single atomic server-side clear: avoids the read-modify-write race of
+      // N parallel per-card null writes from the client.
+      const current = (await ecItemRaw(store)) || {};
+      delete current[bucket];
+      await vcApi("PATCH", `/v1/edge-config/${EC_ID}/items`, {
+        items: [{ operation: "upsert", key: store, value: current }],
+      });
+      return textResult({ ok: true, cleared: store + "/" + bucket });
     }
 
     case "complete_round": {
