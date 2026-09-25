@@ -58,6 +58,31 @@ BATCHES = {
         card("n1-trampoline", "Trampoline", "c", "object — bounce, launch, play"),
         card("n1-grandstand", "Grandstand", "c", "sport — the crowd watching creators do their thing"),
     ],
+    2: [
+        # team a — the brief as feeling (type words, an app appears, play it instantly)
+        card("n2-conjure", "Conjure", "a", "type the words, the app appears like conjured"),
+        card("n2-genie", "Genie", "a", "rub the lamp — the wish becomes playable"),
+        card("n2-manifest", "Manifest", "a", "think it and it manifests, live in the feed"),
+        card("n2-whipup", "Whipup", "a", "whip up a real app in seconds"),
+        card("n2-promptly", "Promptly", "a", "built from a prompt, and promptly"),
+        card("n2-dreambuilt", "Dreambuilt", "a", "built from a daydream, playable by nightfall"),
+        card("n2-vibeship", "Vibeship", "a", "ship the vibe — compound vehicle for the Vibes product"),
+        card("n2-thinklive", "Thinklive", "a", "think it and it's already live"),
+        # team b — metaphor team (workshop / studio / making worlds)
+        card("n2-forge", "Forge", "b", "where raw ideas get hammered into shape"),
+        card("n2-greenhouse", "Greenhouse", "b", "ideas grow fast in the warm light"),
+        card("n2-treehouse", "Treehouse", "b", "built by hand, everyone climbs up"),
+        card("n2-jamroom", "Jamroom", "b", "musicians riff — builders riff here"),
+        card("n2-kiln", "Kiln", "b", "raw clay in, finished piece out"),
+        card("n2-workbench", "Workbench", "b", "the bench where things get made"),
+        # team c — wrong team (music / sport / phenomenon / object / print / neighborhood)
+        card("n2-soundcheck", "Soundcheck", "c", "music — the test before the show goes live"),
+        card("n2-underdog", "Underdog", "c", "sport — the one nobody saw coming"),
+        card("n2-tide", "Tide", "c", "phenomenon — the whole ocean moving one way"),
+        card("n2-snowglobe", "Snowglobe", "c", "object — a whole world you can shake and watch"),
+        card("n2-zine", "Zine", "c", "print — made by hand, passed around, loved hard"),
+        card("n2-alley", "Alley", "c", "neighborhood — where the interesting stuff actually happens"),
+    ],
 }
 
 
