@@ -906,6 +906,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-crystal.webp",
+     "key": "r3-v-crystal",
+     "name": "V Crystal",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-pearl.webp",
+     "key": "r3-vf-pearl",
+     "name": "VF Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-pearl.webp",
+     "key": "r3-wordmark-pearl",
+     "name": "Wordmark Pearl",
+     "traits": {
+      "finish": "3d-pearl",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-mobius-chrome.webp",
+     "key": "r3-mobius-chrome",
+     "name": "Mobius Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-mobius-glass.webp",
+     "key": "r3-mobius-glass",
+     "name": "Mobius Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-molten.webp",
+     "key": "r3-orb-molten",
+     "name": "Orb Molten",
+     "traits": {
+      "finish": "3d-molten",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-cube-glass.webp",
+     "key": "r3-cube-glass",
+     "name": "Cube Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-cube-neon.webp",
+     "key": "r3-cube-neon",
+     "name": "Cube Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-pyramid-neon.webp",
+     "key": "r3-pyramid-neon",
+     "name": "Pyramid Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-helix-neon.webp",
+     "key": "r3-helix-neon",
+     "name": "Helix Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
