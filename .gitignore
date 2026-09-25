@@ -1,0 +1,10 @@
+node_modules/
+.vercel/
+.env
+.env*
+*.log
+__pycache__/
+*.pyc
+poller/decisions.jsonl
+poller/status.json
+.DS_Store
