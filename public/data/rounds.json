@@ -1236,6 +1236,116 @@
       "palette": "brand",
       "shape": "vf-letters"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-chrome-v2.webp",
+     "key": "r3-vf-chrome-v2",
+     "name": "VF Chrome II",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-chrome-neon.webp",
+     "key": "r3-wordmark-chrome-neon",
+     "name": "Wordmark Chrome Neon",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-swirl-v2.webp",
+     "key": "r3-orb-swirl-v2",
+     "name": "Orb Swirl II",
+     "traits": {
+      "finish": "3d-glossy",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-chrome.webp",
+     "key": "r3-orb-chrome",
+     "name": "Orb Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-swirl-chrome.webp",
+     "key": "r3-swirl-chrome",
+     "name": "Swirl Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-swirl-neon.webp",
+     "key": "r3-swirl-neon",
+     "name": "Swirl Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-glass-chrome.webp",
+     "key": "r3-orb-glass-chrome",
+     "name": "Orb Glass Chrome",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-chrome-bright.webp",
+     "key": "r3-v-chrome-bright",
+     "name": "V Chrome Bright",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-chrome-v2.webp",
+     "key": "r3-f-chrome-v2",
+     "name": "F Chrome II",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-glass-v2.webp",
+     "key": "r3-wordmark-glass-v2",
+     "name": "Wordmark Glass II",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
     }
    ]
   }
