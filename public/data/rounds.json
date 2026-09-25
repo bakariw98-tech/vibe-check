@@ -1572,6 +1572,116 @@
       "palette": "brand",
       "shape": "letter-v"
      }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-solid.webp",
+     "key": "r4-f-solid",
+     "name": "F Solid",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-outline.webp",
+     "key": "r4-f-outline",
+     "name": "F Outline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-dot.webp",
+     "key": "r4-f-dot",
+     "name": "F Dot",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-square.webp",
+     "key": "r4-f-square",
+     "name": "F Tile",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-split.webp",
+     "key": "r4-f-split",
+     "name": "F Split",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-rounded.webp",
+     "key": "r4-f-rounded",
+     "name": "F Rounded",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-slash.webp",
+     "key": "r4-f-slash",
+     "name": "F Slash",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-bars.webp",
+     "key": "r4-f-bars",
+     "name": "F Bars",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-negative.webp",
+     "key": "r4-f-negative",
+     "name": "F Negative",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "monogram-f",
+     "file": "logos/r4/r4-f-stencil.webp",
+     "key": "r4-f-stencil",
+     "name": "F Stencil",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
     }
    ]
   }
