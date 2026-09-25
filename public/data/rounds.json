@@ -356,6 +356,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-glass.webp",
+     "key": "r3-v-glass",
+     "name": "V Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-balloon.webp",
+     "key": "r3-f-balloon",
+     "name": "F Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-holo.webp",
+     "key": "r3-vf-holo",
+     "name": "VF Holo",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-chrome.webp",
+     "key": "r3-wordmark-chrome",
+     "name": "Wordmark Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-obsidian.webp",
+     "key": "r3-vf-obsidian",
+     "name": "VF Obsidian",
+     "traits": {
+      "finish": "3d-obsidian",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-neon.webp",
+     "key": "r3-f-neon",
+     "name": "F Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-prism-v.webp",
+     "key": "r3-prism-v",
+     "name": "Prism V",
+     "traits": {
+      "finish": "3d-prism",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-balloon.webp",
+     "key": "r3-orb-balloon",
+     "name": "Orb Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-glass.webp",
+     "key": "r3-vf-glass",
+     "name": "VF Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-helix-chrome.webp",
+     "key": "r3-helix-chrome",
+     "name": "Helix Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
