@@ -2232,6 +2232,116 @@
       "palette": "brand",
       "shape": "abstract-mark"
      }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-black.webp",
+     "key": "r4-word-black",
+     "name": "Wordmark Black",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-light.webp",
+     "key": "r4-word-light",
+     "name": "Wordmark Light",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-caps.webp",
+     "key": "r4-word-caps",
+     "name": "Wordmark Caps",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-underline.webp",
+     "key": "r4-word-underline",
+     "name": "Wordmark Underline",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-bracket.webp",
+     "key": "r4-word-bracket",
+     "name": "Wordmark Bracket",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-tile.webp",
+     "key": "r4-word-tile",
+     "name": "Wordmark Tile",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-neon2d.webp",
+     "key": "r4-word-neon2d",
+     "name": "Wordmark Neon Flat",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-slash.webp",
+     "key": "r4-word-slash",
+     "name": "Wordmark Slash",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-spaced.webp",
+     "key": "r4-word-spaced",
+     "name": "Wordmark Spaced",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "wordmark",
+     "file": "logos/r4/r4-word-italic.webp",
+     "key": "r4-word-italic",
+     "name": "Wordmark Italic",
+     "traits": {
+      "finish": "flat-2d",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
     }
    ]
   }
