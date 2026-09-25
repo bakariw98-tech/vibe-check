@@ -686,6 +686,116 @@
       "palette": "brand",
       "shape": "abstract"
      }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-porcelain.webp",
+     "key": "r3-vf-porcelain",
+     "name": "VF Porcelain",
+     "traits": {
+      "finish": "3d-porcelain",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-ice.webp",
+     "key": "r3-v-ice",
+     "name": "V Ice",
+     "traits": {
+      "finish": "3d-ice",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-ice.webp",
+     "key": "r3-f-ice",
+     "name": "F Ice",
+     "traits": {
+      "finish": "3d-ice",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-prism.webp",
+     "key": "r3-wordmark-prism",
+     "name": "Wordmark Prism",
+     "traits": {
+      "finish": "3d-prism",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-molten.webp",
+     "key": "r3-wordmark-molten",
+     "name": "Wordmark Molten",
+     "traits": {
+      "finish": "3d-molten",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-balloon.webp",
+     "key": "r3-v-balloon",
+     "name": "V Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-pyramid-glass.webp",
+     "key": "r3-pyramid-glass",
+     "name": "Pyramid Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-holo.webp",
+     "key": "r3-orb-holo",
+     "name": "Orb Holo",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-vf-smoke.webp",
+     "key": "r3-vf-smoke",
+     "name": "VF Smoke",
+     "traits": {
+      "finish": "smoke-ink",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-knot-glass.webp",
+     "key": "r3-knot-glass",
+     "name": "Knot Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "abstract"
+     }
     }
    ]
   }
