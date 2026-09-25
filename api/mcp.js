@@ -4,16 +4,17 @@
 //   get_lab_state    — current round, its cards, every swipe decision so far
 //   get_cards        — cards for a round (key, name, image URL, family, traits)
 //   get_taste_profile— keep/pass analysis across rounds
-//   record_decision  — log one swipe; relayed to the agent's live inbox
+//   record_decision  — log one swipe; written straight into Edge Config
 //   complete_round   — signal a finished round with its full log
 //
 // The live loop: the browser calls record_decision per swipe. This function
-// relays it (fire-and-forget email) to the agent watching the other end, who
-// mirrors it into Edge Config — the canonical store get_lab_state serves.
+// writes the decision directly into Edge Config — the canonical store that
+// get_lab_state serves — via the Vercel API (VERCEL_API_TOKEN, server-side
+// only). No email relay, no poller, no third party.
 
-const FORMSUBMIT_EMAIL = process.env.FORMSUBMIT_EMAIL;
 const EC_ID = process.env.EDGE_CONFIG_ID;
 const EC_TOKEN = process.env.EDGE_CONFIG_TOKEN;
+const VERCEL_API_TOKEN = process.env.VERCEL_API_TOKEN;
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -64,21 +65,58 @@ async function nameRoundSummary() {
   return { current: nr.current || 0, rounds: out };
 }
 
-// Fire-and-forget relay to the agent's inbox. Never throws to the caller:
-// the browser already persisted the decision locally; this is only the feed.
-async function relay(subject, fields) {
-  if (!FORMSUBMIT_EMAIL) return;
+// --- Edge Config writes (via the Vercel API; server-side token, never exposed) ---
+
+async function vcApi(method, path, body) {
+  if (!VERCEL_API_TOKEN) throw new Error("VERCEL_API_TOKEN not configured");
+  const res = await fetch("https://api.vercel.com" + path, {
+    method,
+    headers: {
+      Authorization: "Bearer " + VERCEL_API_TOKEN,
+      "Content-Type": "application/json",
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) throw new Error("vercel api " + res.status);
+  return res.json();
+}
+
+async function ecItemRaw(key) {
+  const items = await vcApi("GET", `/v1/edge-config/${EC_ID}/items`);
+  const list = Array.isArray(items) ? items : items.items || [];
+  const found = list.find((it) => it.key === key);
+  return found ? found.value : undefined;
+}
+
+// Persist one swipe decision. Logo rounds use store "decisions" with bucket
+// "2"; name rounds use store "name_decisions" with bucket "n1".
+// decision null/"undo" deletes the key (undo support).
+async function persistDecision(tag, key, decision) {
+  const isName = tag[0] === "n";
+  const store = isName ? "name_decisions" : "decisions";
+  const bucket = isName ? tag : tag.slice(1);
+  const current = (await ecItemRaw(store)) || {};
+  const roundBucket = { ...(current[bucket] || {}) };
+  if (decision === null || decision === "undo") delete roundBucket[key];
+  else roundBucket[key] = { d: decision, ts: Date.now() };
+  const next = { ...current, [bucket]: roundBucket };
+  await vcApi("PATCH", `/v1/edge-config/${EC_ID}/items`, {
+    items: [{ operation: "upsert", key: store, value: next }],
+  });
+  return { store, bucket };
+}
+
+// Record a completed-round event for the generation watcher.
+async function recordRoundEvent(tag, keeps, total) {
   try {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 8000);
-    await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_EMAIL)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ _subject: subject, ...fields }),
-      signal: ctrl.signal,
-    }).catch(() => {});
-    clearTimeout(t);
-  } catch {}
+    const events = (await ecItemRaw("round_events")) || {};
+    events[tag] = { keeps, total, completed_at: Date.now() };
+    await vcApi("PATCH", `/v1/edge-config/${EC_ID}/items`, {
+      items: [{ operation: "upsert", key: "round_events", value: events }],
+    });
+  } catch (e) {
+    console.error("round event write failed:", e.message);
+  }
 }
 
 // --- tools -----------------------------------------------------------------
@@ -114,7 +152,7 @@ const TOOLS = [
   },
   {
     name: "record_decision",
-    description: "Log one swipe: keep, pass, or null to clear (undo). Round is a logo-round number or an \"n<N>\" name round. Broadcast to the live agent loop.",
+    description: "Log one swipe: keep, pass, or null to clear (undo). Round is a logo-round number or an \"n<N>\" name round. Written directly to the canonical Edge Config store.",
     inputSchema: {
       type: "object",
       properties: {
@@ -243,16 +281,15 @@ async function callTool(name, args, host) {
       if (!round || !key || !["keep", "pass", null].includes(decision))
         throw new Error("round, key, decision (keep|pass|null) required");
       const tag = typeof round === "number" ? "r" + round : String(round);
-      relay(`vibe-check ${tag} ${decision || "undo"} ${key}`,
-        { round: tag, key, decision: decision || "undo", ts: Date.now() });
-      return textResult({ ok: true });
+      const where = await persistDecision(tag, key, decision);
+      return textResult({ ok: true, persisted: where.store + "/" + where.bucket });
     }
 
     case "complete_round": {
       const { round, keeps, total } = args;
       if (!round) throw new Error("round required");
       const tag = typeof round === "number" ? "r" + round : String(round);
-      relay(`vibe-check ${tag} complete ${keeps}/${total} kept`, { round: tag, keeps, total });
+      await recordRoundEvent(tag, keeps || 0, total || 0);
       return textResult({ ok: true });
     }
 

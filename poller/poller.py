@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Vibe Check live poller (Gmail version).
+"""RETIRED (2026-09-25): /api/mcp now writes swipe decisions directly into
+Edge Config via the Vercel API — no email relay, no poller needed.
+Kept for reference only; do not run.
+
+Vibe Check live poller (Gmail version).
 
 Each swipe on the deck is relayed as an email with a machine-readable subject
 ("vibe-check r2 keep r2-glass-wave", "vibe-check n1 pass n1-playfeed").

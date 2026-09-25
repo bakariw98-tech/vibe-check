@@ -17,15 +17,15 @@ round from your taste. It never ends until you say so.
 ## The live loop
 
 - The deck (`public/index.html`) reports each decision to `POST /api/mcp`
-  (`record_decision`), which relays it via a lightweight email ping.
-- `poller/poller.py` drains those pings from Gmail, mirrors every decision
-  into Vercel Edge Config (the canonical store), and trashes the pings so
-  the inbox stays clean.
+  (`record_decision`), which writes it **directly into Vercel Edge Config**
+  (the canonical store) via the Vercel API — no relay, no inbox, no poller.
 - The agent side reads canonical state through the MCP tools
-  (`get_lab_state`, `get_cards`, `get_taste_profile`), generates the next
-  round, and redeploys — new cards appear in the deck.
+  (`get_lab_state`, `get_cards`, `get_name_cards`, `get_taste_profile`),
+  generates the next round, and redeploys — new cards appear in the deck.
+- A scheduled watcher checks for completed rounds and fresh activity so
+  generation keeps pace with swiping.
 
-No build step, no dependencies. Static frontend + two serverless functions.
+No build step, no dependencies. Static frontend + serverless functions.
 
 ## Project layout
 
@@ -38,7 +38,8 @@ api/
   mcp.js            # JSON-RPC agent interface (swipe in, state/taste out)
   decisions.js      # canonical decision log
 poller/
-  poller.py         # gmail -> edge-config live mirror
+  poller.py         # RETIRED — decisions now write to Edge Config directly
+                    # from /api/mcp (kept for reference)
 ```
 
 ## Deploy
@@ -48,4 +49,5 @@ poller/
 ```
 
 Environment variables: `EDGE_CONFIG_ID`, `EDGE_CONFIG_TOKEN`,
-`FORMSUBMIT_EMAIL`.
+`VERCEL_API_TOKEN` (server-side only — lets `/api/mcp` write decisions
+straight into Edge Config; never exposed to the browser or the repo).
