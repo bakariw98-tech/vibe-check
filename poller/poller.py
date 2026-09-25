@@ -2,9 +2,13 @@
 """Vibe Check live poller (Gmail version).
 
 Each swipe on the deck is relayed as an email with a machine-readable subject
-("vibe-check r2 keep r2-glass-wave"). This poller drains those emails, mirrors
-the decisions into Edge Config (the canonical store the MCP endpoint serves),
-and trashes the emails so the inbox stays clean.
+("vibe-check r2 keep r2-glass-wave", "vibe-check n1 pass n1-playfeed").
+This poller drains those emails, mirrors the decisions into Edge Config
+(the canonical store the MCP endpoint serves), and trashes the emails so
+the inbox stays clean.
+
+Logo rounds ("r<N>") go to the "decisions" item; name rounds ("n<N>")
+go to the "name_decisions" item.
 
 Usage: python3 poller.py [--once]
 """
@@ -19,8 +23,8 @@ STATUS = os.path.join(BASE, "status.json")
 EC_ID = "ecfg_xkfara8rxvmpzdhdzzqdjf3ynkmh"
 GWS = "/opt/hatch/bin/hatch_gws_cli"
 
-SUBJ_RE = re.compile(r"^vibe-check r(\d+) (keep|pass|undo) (\S+)$")
-DONE_RE = re.compile(r"^vibe-check r(\d+) complete (\d+)/(\d+) kept$")
+SUBJ_RE = re.compile(r"^vibe-check ([rn]\d+) (keep|pass|undo) (\S+)$")
+DONE_RE = re.compile(r"^vibe-check ([rn]\d+) complete (\d+)/(\d+) kept$")
 
 
 def gws(*args):
@@ -40,23 +44,26 @@ def api(method, path, data=None):
     return read_json_response(urllib.request.urlopen(req, timeout=30))
 
 
-def ec_read_decisions():
+def ec_read(key):
     try:
-        items = api("GET", f"/v1/edge-config/{EC_ID}/items").get("items", [])
+        items = api("GET", f"/v1/edge-config/{EC_ID}/items")
+        if isinstance(items, dict):
+            items = items.get("items", [])
         for it in items:
-            if it.get("key") == "decisions":
+            if it.get("key") == key:
                 return it.get("value") or {}
     except Exception as e:
-        print(f"[poller] seed failed: {e}", flush=True)
+        print(f"[poller] seed failed ({key}): {e}", flush=True)
     return {}
 
 
-def ec_write_decisions(decisions):
+def ec_write(key, value):
     api("PATCH", f"/v1/edge-config/{EC_ID}/items",
-        {"items": [{"operation": "upsert", "key": "decisions", "value": decisions}]})
+        {"items": [{"operation": "upsert", "key": key, "value": value}]})
 
 
-def poll_once(decisions):
+def poll_once(state):
+    """state: {"decisions": {...}, "name_decisions": {...}} — mutated in place."""
     out = gws("+triage", "--query", 'subject:"vibe-check" newer_than:2d',
               "--max", "50", "--format", "json")
     try:
@@ -66,7 +73,7 @@ def poll_once(decisions):
     if not isinstance(msgs, list):
         msgs = msgs.get("messages", msgs.get("results", [])) if isinstance(msgs, dict) else []
 
-    changed = False
+    changed = set()
     trash_ids = []
     round_done = None
     for m in msgs:
@@ -75,50 +82,58 @@ def poll_once(decisions):
         m2 = SUBJ_RE.match(subj)
         m3 = DONE_RE.match(subj)
         if m2:
-            rnd, dec, key = m2.group(1), m2.group(2), m2.group(3)
-            decisions.setdefault(rnd, {})
+            tag, dec, key = m2.group(1), m2.group(2), m2.group(3)
+            store_key = "name_decisions" if tag.startswith("n") else "decisions"
+            rnd = tag[1:] if tag.startswith("r") else tag
+            bucket = state[store_key].setdefault(rnd, {})
             if dec == "undo":
-                decisions[rnd].pop(key, None)
+                bucket.pop(key, None)
             else:
-                decisions[rnd][key] = {"d": dec, "ts": int(time.time())}
-            changed = True
+                bucket[key] = {"d": dec, "ts": int(time.time())}
+            changed.add(store_key)
             with open(LOG, "a") as f:
-                f.write(json.dumps({"round": int(rnd), "key": key, "decision": dec}) + "\n")
-            print(f"[poller] r{rnd} {key} -> {dec}", flush=True)
+                f.write(json.dumps({"round": tag, "key": key, "decision": dec}) + "\n")
+            print(f"[poller] {tag} {key} -> {dec}", flush=True)
         elif m3:
-            rnd = m3.group(1)
-            round_done = {"round": int(rnd), "keeps": int(m3.group(2)), "total": int(m3.group(3))}
-            print(f"[poller] ROUND {rnd} COMPLETE: {m3.group(2)}/{m3.group(3)} kept", flush=True)
+            tag = m3.group(1)
+            round_done = {"round": tag, "keeps": int(m3.group(2)), "total": int(m3.group(3))}
+            print(f"[poller] ROUND {tag} COMPLETE: {m3.group(2)}/{m3.group(3)} kept", flush=True)
         if mid:
             trash_ids.append(mid)
 
-    if changed:
+    for store_key in changed:
         try:
-            ec_write_decisions(decisions)
-            print(f"[poller] flushed {sum(len(v) for v in decisions.values())} decisions", flush=True)
+            ec_write(store_key, state[store_key])
+            n = sum(len(v) for v in state[store_key].values())
+            print(f"[poller] flushed {store_key}: {n} decisions", flush=True)
         except Exception as e:
-            print(f"[poller] edge-config write failed: {e}", flush=True)
+            print(f"[poller] edge-config write failed ({store_key}): {e}", flush=True)
 
     if trash_ids:
         gws("+trash", *[a for mid in trash_ids for a in ("--message-id", mid)])
         print(f"[poller] trashed {len(trash_ids)} relay emails", flush=True)
 
     with open(STATUS, "w") as f:
-        json.dump({"last_poll": int(time.time()), "decisions": sum(len(v) for v in decisions.values()),
+        json.dump({"last_poll": int(time.time()),
+                   "decisions": sum(len(v) for v in state["decisions"].values()),
+                   "name_decisions": sum(len(v) for v in state["name_decisions"].values()),
                    "round_done": round_done}, f)
     return round_done
 
 
 def main():
-    decisions = ec_read_decisions()
-    print(f"[poller] seeded {sum(len(v) for v in decisions.values())} decisions", flush=True)
+    state = {"decisions": ec_read("decisions"),
+             "name_decisions": ec_read("name_decisions")}
+    total = sum(len(v) for v in state["decisions"].values()) + \
+        sum(len(v) for v in state["name_decisions"].values())
+    print(f"[poller] seeded {total} decisions", flush=True)
     if "--once" in sys.argv:
-        poll_once(decisions)
+        poll_once(state)
         return
     print("[poller] live", flush=True)
     while True:
         try:
-            done = poll_once(decisions)
+            done = poll_once(state)
             if done:
                 print(f"[poller] *** ROUND {done['round']} DONE — generate next round ***", flush=True)
         except Exception as e:

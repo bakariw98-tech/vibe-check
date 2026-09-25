@@ -18,6 +18,11 @@
   #progress { font-size: 13px; color: #9d94b8; font-variant-numeric: tabular-nums; }
   #bar { height: 3px; background: #221a38; margin: 8px 18px 0; border-radius: 2px; overflow: hidden; }
   #barfill { height: 100%; width: 0%; background: linear-gradient(90deg, #8b5cf6, #22d3ee); transition: width .25s; }
+  #decks { display: flex; justify-content: center; gap: 8px; padding: 10px 0 2px; }
+  .dk { background: #161021; border: 1px solid #2b2145; color: #9d94b8; font-size: 13px;
+    font-weight: 700; padding: 7px 22px; border-radius: 999px; cursor: pointer; }
+  .dk.on { color: #fff; border-color: #8b5cf6;
+    background: linear-gradient(90deg, rgba(139,92,246,.35), rgba(34,211,238,.25)); }
   #stage { position: relative; flex: 1; margin: 10px 18px; }
   .card { position: absolute; inset: 0; border-radius: 22px; overflow: hidden; background: #161021;
     border: 1px solid #2b2145; box-shadow: 0 18px 50px rgba(0,0,0,.55); touch-action: none; }
@@ -25,9 +30,15 @@
   .card .tag { position: absolute; left: 14px; bottom: 12px; font-size: 15px; font-weight: 700;
     text-shadow: 0 2px 10px rgba(0,0,0,.8); }
   .card .stamp { position: absolute; top: 16px; font-size: 26px; font-weight: 800; padding: 6px 14px;
-    border-radius: 12px; opacity: 0; letter-spacing: 1px; }
+    border-radius: 12px; opacity: 0; letter-spacing: 1px; z-index: 5; }
   .stamp.keep { left: 16px; color: #34d399; border: 3px solid #34d399; transform: rotate(-14deg); }
   .stamp.pass { right: 16px; color: #f87171; border: 3px solid #f87171; transform: rotate(14deg); }
+  .card.name { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 30px; text-align: center; }
+  .card.name .nname { font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    text-shadow: 0 4px 24px rgba(0,0,0,.45); }
+  .card.name .nteam { position: absolute; bottom: 16px; font-size: 11px; color: rgba(255,255,255,.55);
+    letter-spacing: 1.5px; text-transform: uppercase; }
   #controls { display: flex; justify-content: center; gap: 22px; padding: 6px 0 10px; }
   .btn { width: 66px; height: 66px; border-radius: 50%; border: 1px solid #2b2145; background: #161021;
     color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
@@ -44,15 +55,25 @@
   .grid .cell { border-radius: 14px; overflow: hidden; border: 1px solid #2b2145; background: #161021; }
   .grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
   .grid .nm { font-size: 12px; padding: 8px 10px; color: #cfc6e8; }
+  .nlist { display: flex; flex-direction: column; gap: 10px; }
+  .nlist .nrow { border-radius: 14px; border: 1px solid #2b2145; padding: 16px; font-size: 22px;
+    font-weight: 800; letter-spacing: -.5px; }
   #live { font-size: 11px; color: #4c445f; text-align: center; padding-bottom: 4px; }
   #live.on { color: #34d399; }
+  #empty { display: none; flex: 1; align-items: center; justify-content: center; text-align: center;
+    color: #9d94b8; font-size: 14px; padding: 0 40px; line-height: 1.6; }
 </style>
 </head>
 <body>
 <div id="app">
   <header><h1><span class="vc">✓</span> vibe check <span class="r" id="roundLabel"></span></h1><span id="progress"></span></header>
   <div id="bar"><div id="barfill"></div></div>
+  <div id="decks">
+    <button class="dk on" id="deckLogos">Logos</button>
+    <button class="dk" id="deckNames">Names</button>
+  </div>
   <div id="stage"></div>
+  <div id="empty"></div>
   <div id="results"></div>
   <div id="controls">
     <button class="btn" id="btnPass" aria-label="Pass">✕</button>
@@ -67,16 +88,32 @@
 </div>
 <script>
 const LS_KEY = "vflab-decisions";
+const NLS_KEY = "vcheck-name-decisions";
+const DECK_KEY = "vcheck-deck";
 const store = {
-  load() { try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { return {}; } },
-  save(d) { localStorage.setItem(LS_KEY, JSON.stringify(d)); },
+  load(k) { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch { return {}; } },
+  save(k, d) { localStorage.setItem(k, JSON.stringify(d)); },
 };
+
+// ---- logos ----
 let ROUNDS, ROUND, CARDS = [], deck = [], history = [];
-let decisions = store.load();
+let decisions = store.load(LS_KEY);
 if (!decisions[2]) decisions[2] = {};
 
+// ---- names ----
+let NROUNDS, NROUND = 0, NCARDS = [], ndeck = [], nhistory = [];
+let ndecisions = store.load(NLS_KEY);
+const NGRADS = [
+  "linear-gradient(135deg,#3b0764,#0e7490)", "linear-gradient(135deg,#4c1d95,#155e75)",
+  "linear-gradient(135deg,#1e1b4b,#0c4a6e)", "linear-gradient(135deg,#581c87,#164e63)",
+  "linear-gradient(135deg,#2e1065,#0e7490)", "linear-gradient(135deg,#312e81,#155e75)",
+];
+const TEAM_LABEL = { a: "team a · the brief", b: "team b · metaphor", c: "team c · wrong team" };
+
+let DECK = localStorage.getItem(DECK_KEY) || "logos";
+
 const $ = (s) => document.querySelector(s);
-const stage = $("#stage"), resultsEl = $("#results");
+const stage = $("#stage"), resultsEl = $("#results"), emptyEl = $("#empty");
 
 function mcpCall(tool, args) {
   return fetch("/api/mcp", {
@@ -88,72 +125,146 @@ function mcpCall(tool, args) {
     return j;
   }).catch(() => { $("#live").classList.remove("on"); });
 }
+const roundTag = () => DECK === "names" ? "n" + NROUND : ROUND;
 const report = (key, decision) =>
-  mcpCall("record_decision", { round: ROUND, key, decision }).catch(() => {});
+  mcpCall("record_decision", { round: roundTag(), key, decision }).catch(() => {});
 
 async function init() {
-  ROUNDS = await fetch("data/rounds.json").then(r => r.json());
+  [ROUNDS, NROUNDS] = await Promise.all([
+    fetch("data/rounds.json").then(r => r.json()),
+    fetch("/api/names").then(r => r.json()).catch(() => ({ current: 0, rounds: {} })),
+  ]);
   ROUND = ROUNDS.current_round;
-  $("#roundLabel").textContent = "· R" + ROUND;
-  document.title = "Vibe Check — R" + ROUND;
-  CARDS = ROUNDS.rounds[String(ROUND)].cards || [];
   const decided = decisions[ROUND] || {};
+  CARDS = ROUNDS.rounds[String(ROUND)].cards || [];
   deck = CARDS.filter(c => !decided[c.key]).map(c => c.key);
+  loadNameRound();
+  setDeck(DECK);
+  setInterval(() => { if (DECK === "names") pollNames(); }, 30000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) pollNames(); });
+}
+
+function loadNameRound() {
+  NROUND = (NROUNDS && NROUNDS.current) || 0;
+  NCARDS = (NROUNDS.rounds && NROUNDS.rounds[String(NROUND)] || { cards: [] }).cards || [];
+  if (!ndecisions[NROUND]) ndecisions[NROUND] = {};
+  const decided = ndecisions[NROUND] || {};
+  ndeck = NCARDS.filter(c => !decided[c.key]).map(c => c.key);
+}
+
+async function pollNames() {
+  try {
+    const d = await fetch("/api/names").then(r => r.json());
+    if (!d || !(d.current > NROUND)) return;
+    NROUNDS = d; loadNameRound();
+    nhistory = [];
+    if (DECK === "names") { render(); updateChrome(); }
+  } catch {}
+}
+
+function setDeck(d) {
+  DECK = d;
+  localStorage.setItem(DECK_KEY, d);
+  $("#deckLogos").classList.toggle("on", d === "logos");
+  $("#deckNames").classList.toggle("on", d === "names");
+  const label = d === "logos" ? "· R" + ROUND : (NROUND ? "· N" + NROUND : "");
+  $("#roundLabel").textContent = label;
+  document.title = d === "logos" ? "Vibe Check — R" + ROUND : "Vibe Check — Names" + (NROUND ? " N" + NROUND : "");
   render(); updateChrome();
 }
 
-function cardByKey(k) { return CARDS.find(c => c.key === k); }
+function cur() {
+  return DECK === "logos"
+    ? { cards: CARDS, queue: deck, hist: history, dec: decisions[ROUND] || {}, round: ROUND }
+    : { cards: NCARDS, queue: ndeck, hist: nhistory, dec: ndecisions[NROUND] || {}, round: "n" + NROUND };
+}
+function cardByKey(k) {
+  const list = DECK === "logos" ? CARDS : NCARDS;
+  return list.find(c => c.key === k);
+}
 
 function render() {
   stage.querySelectorAll(".card").forEach(e => e.remove());
-  const visible = deck.slice(0, 3).reverse();
+  const q = cur().queue;
+  const visible = q.slice(0, 3).reverse();
   visible.forEach((key, i) => {
     const c = cardByKey(key);
+    if (!c) return;
     const el = document.createElement("div");
-    el.className = "card"; el.dataset.key = key;
     const depth = visible.length - 1 - i;
     el.style.transform = `scale(${1 - depth * 0.045}) translateY(${depth * 12}px)`;
     el.style.zIndex = 10 - depth;
-    el.innerHTML = `<img src="${c.file}" alt="${c.name}" draggable="false">
-      <div class="stamp keep">KEEP</div><div class="stamp pass">PASS</div>
-      <div class="tag">${c.name}</div>`;
+    if (DECK === "logos") {
+      el.className = "card"; el.dataset.key = key;
+      el.innerHTML = `<img src="${c.file}" alt="${c.name}" draggable="false">
+        <div class="stamp keep">KEEP</div><div class="stamp pass">PASS</div>
+        <div class="tag">${c.name}</div>`;
+    } else {
+      el.className = "card name"; el.dataset.key = key;
+      const gi = NCARDS.indexOf(c) % NGRADS.length;
+      el.style.background = NGRADS[gi];
+      el.innerHTML = `<div class="stamp keep">KEEP</div><div class="stamp pass">PASS</div>
+        <div class="nname">${c.name}</div>
+        <div class="nteam">${TEAM_LABEL[c.team] || ""}</div>`;
+    }
     if (depth === 0) attachDrag(el);
     stage.appendChild(el);
   });
-  $("#btnUndo").disabled = !history.length;
+  $("#btnUndo").disabled = !cur().hist.length;
 }
 
 function updateChrome() {
-  const total = CARDS.length, done = total - deck.length;
-  $("#progress").textContent = done + " / " + total;
+  const { cards, queue } = cur();
+  const total = cards.length, done = total - queue.length;
+  $("#progress").textContent = total ? done + " / " + total : "";
   $("#barfill").style.width = (total ? (done / total) * 100 : 0) + "%";
-  const showResults = deck.length === 0;
+  const isEmpty = total === 0;
+  const showResults = !isEmpty && queue.length === 0;
+  emptyEl.style.display = isEmpty ? "flex" : "none";
+  if (isEmpty) emptyEl.textContent = DECK === "names"
+    ? "First name batch is generating — it lands here live, no refresh needed."
+    : "No logo cards in this round.";
   resultsEl.style.display = showResults ? "block" : "none";
-  stage.style.display = showResults ? "none" : "block";
-  $("#controls").style.display = showResults ? "none" : "flex";
+  stage.style.display = (showResults || isEmpty) ? "none" : "block";
+  $("#controls").style.display = (showResults || isEmpty) ? "none" : "flex";
   if (showResults) showResultsFn();
 }
 
 function decide(key, decision) {
-  decisions[ROUND][key] = { d: decision, ts: Date.now() };
-  store.save(decisions);
-  history.push({ key, decision });
-  deck = deck.filter(k => k !== key);
+  const tag = roundTag();
+  if (DECK === "logos") {
+    decisions[ROUND][key] = { d: decision, ts: Date.now() };
+    store.save(LS_KEY, decisions);
+    history.push({ key, decision });
+    deck = deck.filter(k => k !== key);
+  } else {
+    ndecisions[NROUND][key] = { d: decision, ts: Date.now() };
+    store.save(NLS_KEY, ndecisions);
+    nhistory.push({ key, decision });
+    ndeck = ndeck.filter(k => k !== key);
+  }
   report(key, decision);
   render(); updateChrome();
-  if (deck.length === 0) {
-    const dec = decisions[ROUND] || {};
+  if (cur().queue.length === 0) {
+    const dec = cur().dec;
     const keeps = Object.values(dec).filter(v => v.d === "keep").length;
-    mcpCall("complete_round", { round: ROUND, keeps, total: CARDS.length }).catch(() => {});
+    mcpCall("complete_round", { round: tag, keeps, total: cur().cards.length }).catch(() => {});
   }
 }
 
 function undo() {
-  const last = history.pop();
+  const h = cur().hist;
+  const last = h.pop();
   if (!last) return;
-  delete decisions[ROUND][last.key];
-  store.save(decisions);
-  deck.unshift(last.key);
+  if (DECK === "logos") {
+    delete decisions[ROUND][last.key];
+    store.save(LS_KEY, decisions);
+    deck.unshift(last.key);
+  } else {
+    delete ndecisions[NROUND][last.key];
+    store.save(NLS_KEY, ndecisions);
+    ndeck.unshift(last.key);
+  }
   report(last.key, null);
   render(); updateChrome();
 }
@@ -190,26 +301,41 @@ function attachDrag(el) {
 }
 
 function showResultsFn() {
-  const dec = decisions[ROUND] || {};
-  const keeps = CARDS.filter(c => dec[c.key]?.d === "keep");
-  resultsEl.innerHTML = `<h2>Round ${ROUND} done</h2>
-    <p>You kept ${keeps.length} of ${CARDS.length}. The next round is already brewing from your picks.</p>
-    <div class="grid">${keeps.map(c =>
-      `<div class="cell"><img src="${c.file}" alt="${c.name}"><div class="nm">${c.name}</div></div>`
-    ).join("") || "<p>Nothing kept — brutal. Round 3 will try harder.</p>"}</div>`;
+  const { cards, dec } = cur();
+  const keeps = cards.filter(c => dec[c.key]?.d === "keep");
+  const rn = DECK === "logos" ? "Round " + ROUND : "Names N" + NROUND;
+  const grid = DECK === "logos"
+    ? `<div class="grid">${keeps.map(c =>
+        `<div class="cell"><img src="${c.file}" alt="${c.name}"><div class="nm">${c.name}</div></div>`
+      ).join("")}</div>`
+    : `<div class="nlist">${keeps.map((c, i) =>
+        `<div class="nrow" style="background:${NGRADS[i % NGRADS.length]}">${c.name}</div>`
+      ).join("")}</div>`;
+  resultsEl.innerHTML = `<h2>${rn} done</h2>
+    <p>You kept ${keeps.length} of ${cards.length}. The next round is already brewing from your picks.</p>
+    ${keeps.length ? grid : "<p>Nothing kept — brutal. The next batch will try harder.</p>"}`;
 }
 
-$("#btnKeep").onclick = () => deck[0] && decide(deck[0], "keep");
-$("#btnPass").onclick = () => deck[0] && decide(deck[0], "pass");
+$("#deckLogos").onclick = () => setDeck("logos");
+$("#deckNames").onclick = () => setDeck("names");
+$("#btnKeep").onclick = () => cur().queue[0] && decide(cur().queue[0], "keep");
+$("#btnPass").onclick = () => cur().queue[0] && decide(cur().queue[0], "pass");
 $("#btnUndo").onclick = undo;
 $("#btnReset").onclick = () => {
-  if (!confirm("Clear all Round " + ROUND + " decisions and start over?")) return;
-  decisions[ROUND] = {}; history = []; store.save(decisions);
-  deck = CARDS.map(c => c.key); render(); updateChrome();
+  const rn = DECK === "logos" ? "Round " + ROUND : "Names N" + NROUND;
+  if (!confirm("Clear all " + rn + " decisions and start over?")) return;
+  if (DECK === "logos") {
+    decisions[ROUND] = {}; history = []; store.save(LS_KEY, decisions);
+    deck = CARDS.map(c => c.key);
+  } else {
+    ndecisions[NROUND] = {}; nhistory = []; store.save(NLS_KEY, ndecisions);
+    ndeck = NCARDS.map(c => c.key);
+  }
+  render(); updateChrome();
 };
 $("#btnAll").onclick = () => {
-  const dec = decisions[ROUND] || {};
-  const keeps = CARDS.filter(c => dec[c.key]?.d === "keep");
+  const { cards, dec } = cur();
+  const keeps = cards.filter(c => dec[c.key]?.d === "keep");
   alert(keeps.length ? "Kept so far:\n• " + keeps.map(c => c.name).join("\n• ") : "Nothing kept yet.");
 };
 document.addEventListener("keydown", e => {

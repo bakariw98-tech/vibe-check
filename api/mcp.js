@@ -46,6 +46,24 @@ async function ecGet(key) {
   }
 }
 
+// Summary of name rounds + decisions for get_lab_state.
+async function nameRoundSummary() {
+  const nr = (await ecGet("name_rounds")) || { current: 0, rounds: {} };
+  const ndec = (await ecGet("name_decisions")) || {};
+  const out = {};
+  for (const [n, rd] of Object.entries(nr.rounds || {})) {
+    const cards = rd.cards || [];
+    const dec = ndec["n" + n] || {};
+    out["n" + n] = {
+      card_count: cards.length,
+      decided: Object.keys(dec).length,
+      keeps: Object.entries(dec).filter(([, v]) => v.d === "keep").map(([k]) => k),
+      passes: Object.entries(dec).filter(([, v]) => v.d === "pass").map(([k]) => k),
+    };
+  }
+  return { current: nr.current || 0, rounds: out };
+}
+
 // Fire-and-forget relay to the agent's inbox. Never throws to the caller:
 // the browser already persisted the decision locally; this is only the feed.
 async function relay(subject, fields) {
@@ -68,7 +86,7 @@ async function relay(subject, fields) {
 const TOOLS = [
   {
     name: "get_lab_state",
-    description: "Current round, its cards, and every swipe decision recorded so far across all rounds.",
+    description: "Current logo round and name round, their cards, and every swipe decision recorded so far across all rounds.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
   },
   {
@@ -81,17 +99,26 @@ const TOOLS = [
     },
   },
   {
+    name: "get_name_cards",
+    description: "List the name cards for a name round (key, name, generating team, rationale).",
+    inputSchema: {
+      type: "object",
+      properties: { round: { type: "integer", description: "Name round number; defaults to current." } },
+      additionalProperties: false,
+    },
+  },
+  {
     name: "get_taste_profile",
-    description: "Keep/pass analysis: which traits (shape, finish, palette, family) the user keeps vs passes.",
+    description: "Keep/pass analysis: which logo traits (shape, finish, palette, family) and which name-generating teams the user keeps vs passes.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
   },
   {
     name: "record_decision",
-    description: "Log one swipe: keep, pass, or null to clear (undo). Broadcast to the live agent loop.",
+    description: "Log one swipe: keep, pass, or null to clear (undo). Round is a logo-round number or an \"n<N>\" name round. Broadcast to the live agent loop.",
     inputSchema: {
       type: "object",
       properties: {
-        round: { type: "integer" },
+        round: { type: ["integer", "string"] },
         key: { type: "string" },
         decision: { type: ["string", "null"], enum: ["keep", "pass", null] },
       },
@@ -101,11 +128,11 @@ const TOOLS = [
   },
   {
     name: "complete_round",
-    description: "Signal a finished round with its full decision log.",
+    description: "Signal a finished round with its full decision log. Round is a logo-round number or an \"n<N>\" name round.",
     inputSchema: {
       type: "object",
       properties: {
-        round: { type: "integer" },
+        round: { type: ["integer", "string"] },
         keeps: { type: "integer" },
         total: { type: "integer" },
       },
@@ -138,7 +165,17 @@ async function callTool(name, args, host) {
           passes: Object.entries(dec).filter(([, v]) => v.d === "pass").map(([k]) => k),
         };
       }
-      return textResult({ current_round: current, rounds: perRound });
+      return textResult({ current_round: current, rounds: perRound,
+        name_rounds: await nameRoundSummary() });
+    }
+
+    case "get_name_cards": {
+      const nr = await ecGet("name_rounds");
+      const n = String(args.round || (nr && nr.current) || 0);
+      const rd = nr && nr.rounds && nr.rounds[n];
+      if (!rd) throw new Error("no such name round: " + n);
+      return textResult({ round: Number(n),
+        cards: (rd.cards || []).map((c) => ({ key: c.key, name: c.name, team: c.team, note: c.note })) });
     }
 
     case "get_cards": {
@@ -178,22 +215,44 @@ async function callTool(name, args, host) {
         .map(([trait, s]) => ({ trait, ...s, total: s.keep + s.pass,
           keep_rate: Math.round((s.keep / (s.keep + s.pass)) * 100) / 100 }))
         .sort((a, b) => b.total - a.total);
-      return textResult({ traits: ranked });
+      // Name taste: keep/pass rates per generating team.
+      const nr = await ecGet("name_rounds");
+      const ndec = (await ecGet("name_decisions")) || {};
+      const byTeam = {};
+      if (nr && nr.rounds) {
+        for (const [n, rd] of Object.entries(nr.rounds)) {
+          const dec = ndec["n" + n] || {};
+          for (const c of rd.cards || []) {
+            const d = dec[c.key];
+            if (!d || !d.d) continue;
+            const t = "name-team:" + (c.team || "?");
+            byTeam[t] = byTeam[t] || { keep: 0, pass: 0 };
+            byTeam[t][d.d === "keep" ? "keep" : "pass"] += 1;
+          }
+        }
+      }
+      const nameTeams = Object.entries(byTeam)
+        .map(([trait, s]) => ({ trait, ...s, total: s.keep + s.pass,
+          keep_rate: Math.round((s.keep / (s.keep + s.pass)) * 100) / 100 }))
+        .sort((a, b) => b.total - a.total);
+      return textResult({ traits: ranked, name_teams: nameTeams });
     }
 
     case "record_decision": {
       const { round, key, decision } = args;
       if (!round || !key || !["keep", "pass", null].includes(decision))
         throw new Error("round, key, decision (keep|pass|null) required");
-      relay(`vibe-check r${round} ${decision || "undo"} ${key}`,
-        { round, key, decision: decision || "undo", ts: Date.now() });
+      const tag = typeof round === "number" ? "r" + round : String(round);
+      relay(`vibe-check ${tag} ${decision || "undo"} ${key}`,
+        { round: tag, key, decision: decision || "undo", ts: Date.now() });
       return textResult({ ok: true });
     }
 
     case "complete_round": {
       const { round, keeps, total } = args;
       if (!round) throw new Error("round required");
-      relay(`vibe-check r${round} complete ${keeps}/${total} kept`, { round, keeps, total });
+      const tag = typeof round === "number" ? "r" + round : String(round);
+      relay(`vibe-check ${tag} complete ${keeps}/${total} kept`, { round: tag, keeps, total });
       return textResult({ ok: true });
     }
 
@@ -243,7 +302,7 @@ module.exports = async (req, res) => {
       case "initialize":
         return ok(id, { protocolVersion: PROTOCOL_VERSION,
           capabilities: { tools: { listChanged: false } }, serverInfo: SERVER_INFO,
-          instructions: "Swipe-deck logo lab. Watch get_lab_state while the user swipes; generate the next round from get_taste_profile." });
+          instructions: "Vibe Check: endless swipe decks for logos and names. Watch get_lab_state while the user swipes; generate the next round from get_taste_profile. Logo rounds go through rounds.json + redeploy; name rounds are written live to the name_rounds Edge Config item." });
       case "notifications/initialized":
       case "notifications/cancelled":
         return res.status(202).end();
