@@ -1,1 +1,363 @@
-{"current_round":2,"mqtt_topic":"vflab-x7k2m9p4","rounds":{"1":{"keeps":["chrome-wave","chrome-v","waveform-v","wordmark","balloon-vf","isometric"],"kind":"artifact","note":"Original 41-card artifact deck (round 1). Cards retired; decisions seed the taste profile.","passes":31},"2":{"cards":[{"family":"similar","file":"logos/r2/glass-wave.webp","key":"r2-glass-wave","name":"Glass Wave","traits":{"finish":"3d-glass","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/chrome-wave-bright.webp","key":"r2-chrome-wave-bright","name":"Chrome Wave Bright","traits":{"finish":"3d-chrome","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/bubble-vf.webp","key":"r2-bubble-vf","name":"Bubble vf","traits":{"finish":"3d-glossy","palette":"brand","shape":"vf-letters"}},{"family":"similar","file":"logos/r2/crystal-wave.webp","key":"r2-crystal-wave","name":"Crystal Wave","traits":{"finish":"3d-crystal","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/inflate-wave.webp","key":"r2-inflate-wave","name":"Inflatable Wave","traits":{"finish":"3d-balloon","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/holo-wave.webp","key":"r2-holo-wave","name":"Holo Wave","traits":{"finish":"3d-holographic","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/marble-wave.webp","key":"r2-marble-wave","name":"Marble Wave","traits":{"finish":"3d-stone","palette":"brand","shape":"wave"}},{"family":"similar","file":"logos/r2/neon-wave.webp","key":"r2-neon-wave","name":"Neon Wave","traits":{"finish":"neon-tube","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/smoke-wave.webp","key":"r2-smoke-wave","name":"Smoke Wave","traits":{"finish":"smoke-ink","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/wireframe-wave.webp","key":"r2-wireframe-wave","name":"Wireframe Wave","traits":{"finish":"wireframe-3d","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/orb.webp","key":"r2-orb","name":"Orb","traits":{"finish":"3d-glossy","palette":"brand","shape":"abstract"}},{"family":"wild","file":"logos/r2/eq-bars.webp","key":"r2-eq-bars","name":"EQ Bars","traits":{"finish":"neon-flat","palette":"brand","shape":"abstract"}},{"family":"wild","file":"logos/r2/glitch-wave.webp","key":"r2-glitch-wave","name":"Glitch Wave","traits":{"finish":"glitch","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/line-wave.webp","key":"r2-line-wave","name":"Line Wave","traits":{"finish":"minimal-line","palette":"neutral","shape":"wave"}},{"family":"wild","file":"logos/r2/pixel-wave.webp","key":"r2-pixel-wave","name":"Pixel Wave","traits":{"finish":"pixel","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/duotone-wave.webp","key":"r2-duotone-wave","name":"Duotone Wave","traits":{"finish":"flat-vector","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/paper-wave.webp","key":"r2-paper-wave","name":"Paper Wave","traits":{"finish":"papercraft","palette":"brand","shape":"wave"}},{"family":"wild","file":"logos/r2/liquid-blob.webp","key":"r2-liquid-blob","name":"Liquid Blob","traits":{"finish":"3d-chrome","palette":"brand","shape":"abstract"}},{"family":"wild","file":"logos/r2/neon-grid.webp","key":"r2-neon-grid","name":"Neon Grid","traits":{"finish":"retro-neon","palette":"brand","shape":"wave-scene"}},{"family":"wild","file":"logos/r2/concrete-wave.webp","key":"r2-concrete-wave","name":"Concrete Wave","traits":{"finish":"brutalist","palette":"neutral","shape":"wave"}}],"kind":"lab","note":"Round 2: 8 lookalikes of round-1 keeps + 12 wildcards."}}}
+{
+ "current_round": 3,
+ "mqtt_topic": "vflab-x7k2m9p4",
+ "rounds": {
+  "1": {
+   "keeps": [
+    "chrome-wave",
+    "chrome-v",
+    "waveform-v",
+    "wordmark",
+    "balloon-vf",
+    "isometric"
+   ],
+   "kind": "artifact",
+   "note": "Original 41-card artifact deck (round 1). Cards retired; decisions seed the taste profile.",
+   "passes": 31
+  },
+  "2": {
+   "cards": [
+    {
+     "family": "similar",
+     "file": "logos/r2/glass-wave.webp",
+     "key": "r2-glass-wave",
+     "name": "Glass Wave",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/chrome-wave-bright.webp",
+     "key": "r2-chrome-wave-bright",
+     "name": "Chrome Wave Bright",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/bubble-vf.webp",
+     "key": "r2-bubble-vf",
+     "name": "Bubble vf",
+     "traits": {
+      "finish": "3d-glossy",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/crystal-wave.webp",
+     "key": "r2-crystal-wave",
+     "name": "Crystal Wave",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/inflate-wave.webp",
+     "key": "r2-inflate-wave",
+     "name": "Inflatable Wave",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/holo-wave.webp",
+     "key": "r2-holo-wave",
+     "name": "Holo Wave",
+     "traits": {
+      "finish": "3d-holographic",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/marble-wave.webp",
+     "key": "r2-marble-wave",
+     "name": "Marble Wave",
+     "traits": {
+      "finish": "3d-stone",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r2/neon-wave.webp",
+     "key": "r2-neon-wave",
+     "name": "Neon Wave",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/smoke-wave.webp",
+     "key": "r2-smoke-wave",
+     "name": "Smoke Wave",
+     "traits": {
+      "finish": "smoke-ink",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/wireframe-wave.webp",
+     "key": "r2-wireframe-wave",
+     "name": "Wireframe Wave",
+     "traits": {
+      "finish": "wireframe-3d",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/orb.webp",
+     "key": "r2-orb",
+     "name": "Orb",
+     "traits": {
+      "finish": "3d-glossy",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/eq-bars.webp",
+     "key": "r2-eq-bars",
+     "name": "EQ Bars",
+     "traits": {
+      "finish": "neon-flat",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/glitch-wave.webp",
+     "key": "r2-glitch-wave",
+     "name": "Glitch Wave",
+     "traits": {
+      "finish": "glitch",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/line-wave.webp",
+     "key": "r2-line-wave",
+     "name": "Line Wave",
+     "traits": {
+      "finish": "minimal-line",
+      "palette": "neutral",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/pixel-wave.webp",
+     "key": "r2-pixel-wave",
+     "name": "Pixel Wave",
+     "traits": {
+      "finish": "pixel",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/duotone-wave.webp",
+     "key": "r2-duotone-wave",
+     "name": "Duotone Wave",
+     "traits": {
+      "finish": "flat-vector",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/paper-wave.webp",
+     "key": "r2-paper-wave",
+     "name": "Paper Wave",
+     "traits": {
+      "finish": "papercraft",
+      "palette": "brand",
+      "shape": "wave"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/liquid-blob.webp",
+     "key": "r2-liquid-blob",
+     "name": "Liquid Blob",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/neon-grid.webp",
+     "key": "r2-neon-grid",
+     "name": "Neon Grid",
+     "traits": {
+      "finish": "retro-neon",
+      "palette": "brand",
+      "shape": "wave-scene"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r2/concrete-wave.webp",
+     "key": "r2-concrete-wave",
+     "name": "Concrete Wave",
+     "traits": {
+      "finish": "brutalist",
+      "palette": "neutral",
+      "shape": "wave"
+     }
+    }
+   ],
+   "kind": "lab",
+   "note": "Round 2: 8 lookalikes of round-1 keeps + 12 wildcards. Completed 2026-09-25: 0 keeps / 20 passes \u2014 wave shapes rejected outright.",
+   "keeps": [],
+   "passes": 20
+  },
+  "3": {
+   "kind": "lab",
+   "note": "Round 3: post-r2 reset (r2 went 0/20 keeps, wave shapes rejected). 100 non-wave glossy 3D explorations \u2014 VF monograms, V/F letters, dimensional wordmarks, abstract marks \u2014 violet-cyan on dark, bright. Shipping in batches of 10.",
+   "cards": [
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-chrome.webp",
+     "key": "r3-vf-chrome",
+     "name": "VF Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-balloon.webp",
+     "key": "r3-wordmark-balloon",
+     "name": "Wordmark Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-v-obsidian.webp",
+     "key": "r3-v-obsidian",
+     "name": "V Obsidian",
+     "traits": {
+      "finish": "3d-obsidian",
+      "palette": "brand",
+      "shape": "letter-v"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-f-chrome.webp",
+     "key": "r3-f-chrome",
+     "name": "F Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "letter-f"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-balloon.webp",
+     "key": "r3-vf-balloon",
+     "name": "VF Balloon",
+     "traits": {
+      "finish": "3d-balloon",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-neon.webp",
+     "key": "r3-vf-neon",
+     "name": "VF Neon",
+     "traits": {
+      "finish": "neon-tube",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-wordmark-glass.webp",
+     "key": "r3-wordmark-glass",
+     "name": "Wordmark Glass",
+     "traits": {
+      "finish": "3d-glass",
+      "palette": "brand",
+      "shape": "wordmark"
+     }
+    },
+    {
+     "family": "similar",
+     "file": "logos/r3/r3-vf-crystal.webp",
+     "key": "r3-vf-crystal",
+     "name": "VF Crystal",
+     "traits": {
+      "finish": "3d-crystal",
+      "palette": "brand",
+      "shape": "vf-letters"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-orb-swirl.webp",
+     "key": "r3-orb-swirl",
+     "name": "Orb Swirl",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    },
+    {
+     "family": "wild",
+     "file": "logos/r3/r3-knot-chrome.webp",
+     "key": "r3-knot-chrome",
+     "name": "Knot Chrome",
+     "traits": {
+      "finish": "3d-chrome",
+      "palette": "brand",
+      "shape": "abstract"
+     }
+    }
+   ]
+  }
+ }
+}

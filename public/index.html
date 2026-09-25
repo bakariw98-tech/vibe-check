@@ -129,12 +129,55 @@ const roundTag = () => DECK === "names" ? "n" + NROUND : ROUND;
 const report = (key, decision) =>
   mcpCall("record_decision", { round: roundTag(), key, decision }).catch(() => {});
 
+// ---- cross-browser swipe memory ----
+// The server (Edge Config, via /api/mcp) is the canonical, last-write-wins
+// store for every swipe. On load we hydrate it into the local stores so a
+// fresh browser/Safari sees the same history: union per round and key, and
+// on any conflict the server value stands (server wins ties).
+function mergeServerDecisions(local, serverMap) {
+  for (const [k, v] of Object.entries(serverMap)) {
+    const l = local[k];
+    if (!l || l.d !== v.d) local[k] = v;
+    else local[k] = { d: l.d, ts: Math.max(l.ts || 0, v.ts || 0) };
+  }
+  return local;
+}
+async function hydrate() {
+  try {
+    const res = await mcpCall("get_lab_state", {});
+    const c = res && res.result && res.result.content && res.result.content[0];
+    if (!c || !c.text) return;
+    const data = JSON.parse(c.text);
+    const now = Date.now();
+    const toMap = (rd) => {
+      const m = {};
+      (rd.keeps || []).forEach(k => { m[k] = { d: "keep", ts: now }; });
+      (rd.passes || []).forEach(k => { m[k] = { d: "pass", ts: now }; });
+      return m;
+    };
+    for (const [rn, rd] of Object.entries(data.rounds || {})) {
+      if (!decisions[rn]) decisions[rn] = {};
+      mergeServerDecisions(decisions[rn], toMap(rd));
+    }
+    const nrs = (data.name_rounds && data.name_rounds.rounds) || {};
+    for (const [tag, rd] of Object.entries(nrs)) {
+      const n = Number(String(tag).replace(/^n/, ""));
+      if (!ndecisions[n]) ndecisions[n] = {};
+      mergeServerDecisions(ndecisions[n], toMap(rd));
+    }
+    store.save(LS_KEY, decisions);
+    store.save(NLS_KEY, ndecisions);
+  } catch { /* offline: keep local-only state */ }
+}
+
 async function init() {
   [ROUNDS, NROUNDS] = await Promise.all([
     fetch("data/rounds.json").then(r => r.json()),
     fetch("/api/names").then(r => r.json()).catch(() => ({ current: 0, rounds: {} })),
   ]);
   ROUND = ROUNDS.current_round;
+  await hydrate();
+  if (!decisions[ROUND]) decisions[ROUND] = {};
   const decided = decisions[ROUND] || {};
   CARDS = ROUNDS.rounds[String(ROUND)].cards || [];
   deck = CARDS.filter(c => !decided[c.key]).map(c => c.key);
@@ -325,9 +368,11 @@ $("#btnReset").onclick = () => {
   const rn = DECK === "logos" ? "Round " + ROUND : "Names N" + NROUND;
   if (!confirm("Clear all " + rn + " decisions and start over?")) return;
   if (DECK === "logos") {
+    Object.keys(decisions[ROUND] || {}).forEach(k => report(k, null)); // clear canonical too
     decisions[ROUND] = {}; history = []; store.save(LS_KEY, decisions);
     deck = CARDS.map(c => c.key);
   } else {
+    Object.keys(ndecisions[NROUND] || {}).forEach(k => report(k, null)); // clear canonical too
     ndecisions[NROUND] = {}; nhistory = []; store.save(NLS_KEY, ndecisions);
     ndeck = NCARDS.map(c => c.key);
   }
